@@ -20,7 +20,9 @@ function ToDoList({ todos, filteredTodos }) {
             />
             <label htmlFor="toggle-all">Mark all as complete</label>
             <ul className="todo-list">
-                {filteredTodos.map(todo => <ToDoItem key={todo.id} todo={ todo } />)}
+                {filteredTodos.map(todo => 
+                    <ToDoItem key={todo.id} todo={ todo } />
+                    )}
             </ul>
         </section>
     );

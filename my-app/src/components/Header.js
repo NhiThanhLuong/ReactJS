@@ -6,8 +6,8 @@ function Header() {
     const [newTodo, setNewTodo] = useState("");
 
     const onKeyUp = (event) => {
-        if (event.keyCode === 13) {
-            addTodo(newTodo)
+        if (newTodo.trim() && event.keyCode === 13) {
+            addTodo(newTodo.trim())
             setNewTodo("")
         } else if (event.keyCode === 27) {
             setNewTodo("")

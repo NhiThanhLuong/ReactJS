@@ -58,9 +58,22 @@ const Provider = (props) => {
   const clearTodoCompleted = () => {
     const newTodos = todos.filter(todo => !todo.completed)
     setTodos(newTodos)
-  }
+  };
+  const editTodo = (id, newText) => {
+    const foundTodo = todos.find((t) => t.id === id);
+    if (foundTodo) {
+      foundTodo.text = newText;
+    }
+    const newTodos = todos.map((t) => {
+      if (t.id === id) {
+        return foundTodo;
+      }
+      return t;
+    });
+    setTodos(newTodos);
+  };
   return (
-    <Context.Provider value={{ todos, addTodo, removeTodo, toggleTodo, toggleTodoAll, clearTodoCompleted }}>
+    <Context.Provider value={{ todos, addTodo, removeTodo, toggleTodo, toggleTodoAll, clearTodoCompleted, editTodo }}>
       {children}
     </Context.Provider>
   );
