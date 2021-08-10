@@ -23,7 +23,7 @@ function App() {
     <section className="todoapp">
      <Header/>
      <ToDoList todos = { todos } filteredTodos={ filteredTodos }/>
-     <Footer todos = { todos  } setFilter= { setFilter }/>
+     <Footer todos = { todos  } filter = { filter } setFilter= { setFilter }/>
     </section>
   );
 }

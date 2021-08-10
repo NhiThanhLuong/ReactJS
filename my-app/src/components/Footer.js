@@ -1,11 +1,14 @@
-function Footer({ todos, setFilter }) {
+import  { useTodos }  from '../store/store'
+
+function Footer({ filter, todos, setFilter }) {
+    const { clearTodoCompleted } = useTodos()
     return (
         <footer className="footer">
             <span className="todo-count"><strong>{todos.filter((t) => !t.completed).length}</strong> item left</span>
             <ul className="filters">
                 <li>
                     <a 
-                        className="selected" 
+                        className={ filter === 'all' ? 'selected' : undefined }
                         href='/#'
                         onClick={() => setFilter('all')}
                     >
@@ -14,6 +17,7 @@ function Footer({ todos, setFilter }) {
                 </li>
                 <li>
                     <a 
+                        className={ filter === 'not_completed' ? 'selected' : undefined }
                         href='/#'
                         onClick={() => setFilter('not_completed')}
                     >
@@ -22,6 +26,7 @@ function Footer({ todos, setFilter }) {
                 </li>
                 <li>
                     <a 
+                        className={ filter === 'completed' ? 'selected' : undefined }
                         href='/#'
                         onClick={() => setFilter('completed')}
                     >
@@ -29,7 +34,12 @@ function Footer({ todos, setFilter }) {
                     </a>
                 </li>
             </ul>
-            <button className="clear-completed">Clear completed</button>
+            <button 
+                className="clear-completed"
+                onClick={() => clearTodoCompleted()}
+            >
+                Clear completed
+            </button>
         </footer>
     );
 }

@@ -52,11 +52,15 @@ const Provider = (props) => {
     setTodos(newTodos);
   };
   const toggleTodoAll = () => {
-    todos.forEach( todo => todo.completed = 'completed')
+    todos.forEach( todo => todo.completed = true)
     setTodos(todos)
   };
+  const clearTodoCompleted = () => {
+    const newTodos = todos.filter(todo => !todo.completed)
+    setTodos(newTodos)
+  }
   return (
-    <Context.Provider value={{ todos, addTodo, removeTodo, toggleTodo, toggleTodoAll }}>
+    <Context.Provider value={{ todos, addTodo, removeTodo, toggleTodo, toggleTodoAll, clearTodoCompleted }}>
       {children}
     </Context.Provider>
   );
